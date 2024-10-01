@@ -4619,14 +4619,6 @@ function library:CreateSettingsTab(menu)
     local settingsTab = menu:AddTab('Settings', 999);
     local configSection = settingsTab:AddSection('Config', 2);
     local mainSection = settingsTab:AddSection('Main', 1);
-    local creditsSection = settingsTab:AddSection('Credits', 2);
-    creditsSection:AddSeparator({text = 'Owners/Developers'});
-    creditsSection:AddText({text = "xz#1111"})
-    creditsSection:AddText({text = "goof#1000"})
-    creditsSection:AddSeparator({text = 'Helpers'});
-    creditsSection:AddText({text = "encode#9999"})
-    creditsSection:AddText({text = "Vault#5434"})
-
 
     configSection:AddBox({text = 'Config Name', flag = 'configinput'})
     configSection:AddList({text = 'Config', flag = 'selectedconfig'})
@@ -4676,14 +4668,6 @@ function library:CreateSettingsTab(menu)
     mainSection:AddButton({text = 'Unload', confirm = true, callback = function()
         library:Unload();
     end})
-
-    mainSection:AddSeparator({text = 'Watermark'})
-    mainSection:AddToggle({text = 'Enabled', flag = 'watermark_enabled'});
-    mainSection:AddList({text = 'Position', flag = 'watermark_pos', selected = 'Custom', values = {'Top', 'Top Left', 'Top Right', 'Bottom Left', 'Bottom Right', 'Custom'}, callback = function(val)
-        library.watermark.lock = val;
-    end})
-    mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', value = 6.1, min = 0, max = 100, increment = .1});
-    mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', value = 1.2, min = 0, max = 100, increment = .1});
 
     local themeStrings = {};
     for _,v in next, library.themes do
